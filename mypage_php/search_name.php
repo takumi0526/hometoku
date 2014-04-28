@@ -12,19 +12,6 @@ if(!empty($_COOKIE['staff_id'])){
 }
 
 if($name_key) {
-	/*
-	$sql = 'SELECT family,name,kana_family,kana_name,staff_id FROM staff_table WHERE NOT staff_id=';
-	$sql.=$staff_id;
-	$sql.=' AND ( family="';
-	$sql.=$name_key;
-	$sql.='" OR name="';
-	$sql.=$name_key;
-	$sql.='" OR kana_family="';
-	$sql.=$name_key;
-	$sql.='" OR kana_name="';
-	$sql.=$name_key;
-	$sql.='")';
-	*/
 $sql = 'SELECT family,name,kana_family,kana_name,staff_id FROM staff_table WHERE NOT staff_id=';
 	$sql.=$staff_id;
 	$sql.=' AND ( family LIKE "%';
@@ -33,7 +20,7 @@ $sql = 'SELECT family,name,kana_family,kana_name,staff_id FROM staff_table WHERE
 	$sql.=$name_key;
 	$sql.='%" OR kana_family LIKE "%';
 	$sql.=$name_key;
-	$sql.='%" OR kana_name="%';
+	$sql.='%" OR kana_name LIKE "%';
 	$sql.=$name_key;
 	$sql.='%")';
 	}

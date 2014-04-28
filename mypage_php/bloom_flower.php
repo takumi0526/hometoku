@@ -3,6 +3,7 @@
 choose seed randomly
 output seed and status of flower
 */
+header("Access-Control-Allow-Origin: *");
 ini_set('display_errors', 1);
 
 require_once("../dbconnect.php");
