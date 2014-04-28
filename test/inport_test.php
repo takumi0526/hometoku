@@ -26,3 +26,5 @@ if($sth->prepare($sql)){
 }
 
 echo "実行しました";
+echo '<form action="index.php" method="post">';
+echo '<input type="submit" name="submit" value="戻ります">';

@@ -104,7 +104,7 @@ $(function() {
 				dataType: 'json',
 				success: function(json){
 					if(!json) {
-						alert("一致する名前がありません。");
+						alert("一致する名前がありません。\n苗字のみ、または名前のみを入力してください。");
 					}
 
 					var name_line = "";

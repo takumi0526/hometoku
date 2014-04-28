@@ -26,7 +26,7 @@
 		<div id="menu">
       <ul>
         <li onClick="location.href='admin.php'" style="background-color:#eee">リスト</li>
-        <li onClick="location.href='clear.php'">クリア</li>
+        <li onClick="location.href='./test/reset_index.php'">クリア</li>
         <li onClick="location.href='inport.php'">登録</li>
         <li onClick="location.href='delete.php'">削除</li>
         <li onClick="location.href='login.php'">一般ログイン</li>

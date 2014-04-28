@@ -12,7 +12,7 @@ if(!empty($_COOKIE['staff_id'])){
 }
 
 if($name_key) {
-	
+	/*
 	$sql = 'SELECT family,name,kana_family,kana_name,staff_id FROM staff_table WHERE NOT staff_id=';
 	$sql.=$staff_id;
 	$sql.=' AND ( family="';
@@ -24,6 +24,18 @@ if($name_key) {
 	$sql.='" OR kana_name="';
 	$sql.=$name_key;
 	$sql.='")';
+	*/
+$sql = 'SELECT family,name,kana_family,kana_name,staff_id FROM staff_table WHERE NOT staff_id=';
+	$sql.=$staff_id;
+	$sql.=' AND ( family LIKE "%';
+	$sql.=$name_key;
+	$sql.='%" OR name LIKE "%';
+	$sql.=$name_key;
+	$sql.='%" OR kana_family LIKE "%';
+	$sql.=$name_key;
+	$sql.='%" OR kana_name="%';
+	$sql.=$name_key;
+	$sql.='%")';
 	}
 else {
 	$sql = "SELECT family,name,kana_family,kana_name,staff_id FROM staff_table WHERE NOT family = 'admin' AND NOT staff_id=".$staff_id." ORDER BY kana_family ASC";
@@ -41,8 +53,6 @@ while($data = $result->fetch_row()) {
 	);
 	$i++;
 }
-
-
 //header('Content-type: application/json; charaset=utf-8')
 echo json_encode($result_json);
 ?>
