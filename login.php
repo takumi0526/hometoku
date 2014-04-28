@@ -1,5 +1,5 @@
 <?php
-	
+
 	require ('dbconnect.php');
 	session_start();
 	$mysqli=db_connect();
@@ -8,7 +8,7 @@
 		$_POST['pass'] = $_COOKIE['pass'];
 		$_POST['save'] = 'on';
 	}
-	
+
 	if (!empty($_POST)) {
 		if ($_POST['staff_id'] != '' && $_POST['pass'] != '') {
 			$staff_id=$_POST['staff_id'];
@@ -17,11 +17,11 @@
 			$result=$mysqli -> query($sql);
 			$mysqli->real_escape_string($staff_id);
 			#mysqli_real_escape_string($pass);
-			$record = $mysqli->query($sql) or die($mysqli->error());
+			$record = $mysqli->query($sql);
 			if ($table = $record -> fetch_assoc()) {
 				// ログイン成功
 				$_SESSION['staff_id'] = $table['staff_id'];
-				
+
 				if ($_POST['save'] == 'on' && $staff_id!=0) {
 					setcookie('staff_id', $staff_id, time()+60*60*24*14);
 					setcookie('pass', $pass, time()+60*60*24*14);
@@ -30,7 +30,7 @@
 				header('Location: admin.php');
 				exit();
 			}
-			header('Location: index.php'); 
+			header('Location: index.php');
 			exit();
 			} else {
 				$error['login'] = 'failed';
@@ -44,7 +44,7 @@
 
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />		
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<script type="text/javascript" src="./lib/jquery.min.js"></script>
 		<script type="text/javascript" src="./lib/endless_scroll_min.js"></script>
 		<script type="text/javascript" src="./lib/Vague.js"></script>
